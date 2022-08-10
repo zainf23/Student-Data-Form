@@ -1,0 +1,44 @@
+<h2>Student Data Form</h2>
+
+<div class="file-upload">
+    <form id="myForm" (ngSubmit)="checkSubmit()">
+        <input type="file" id="excelFile" accept=".csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<table id="dataTable">
+    <tr>
+        <th (click)="showStudentHeader=false">
+            <p *ngIf="showStudentHeader===true">Student Name</p>
+            <input *ngIf="showStudentHeader===false" type="text" id="nameQuery" (keyup)="filterFunction(0)" placeholder="Search for name">
+        </th>
+        <th (click)="showEmailHeader=false">
+            <p *ngIf="showEmailHeader===true">Student Email</p>
+            <input *ngIf="showEmailHeader===false" type="text" id="emailQuery" (keyup)="filterFunction(1)" placeholder="Search for email">
+        </th>
+        <th (click)="showIdHeader=false">
+            <p *ngIf="showIdHeader===true">Student ID</p>
+            <input *ngIf="showIdHeader===false" type="text" id="idQuery" (keyup)="filterFunction(2)" placeholder="Search for ID">
+        </th>
+        <th (click)="showStatusHeader=false">
+            <p *ngIf="showStatusHeader===true">Enrollment Status</p>
+            <input *ngIf="showStatusHeader===false" type="text" id="statusQuery" (keyup)="filterFunction(3)" placeholder="Search for status">
+        </th>
+        <th>International/Domestic</th>
+        <th>Advisor</th>
+        <th>Admit Term</th>
+        <th>Years Enrolled</th>  
+    </tr>
+    <tr *ngFor="let line of data">
+        <td>{{line.STUDENT}}</td>
+        <td>{{line.EMAIL}}</td>
+        <td>{{line.ID}}</td>
+        <td>{{line.ENROLLMENTSTATUS}}</td>
+        <td>{{line.INTERNATIONALDOMESTIC}}</td>
+        <td>{{line.ADV}}</td>
+        <td>{{line.ADMITTERM}}</td>
+        <td>{{line.YEARSENROLLED}}</td>
+    </tr>
+</table>
